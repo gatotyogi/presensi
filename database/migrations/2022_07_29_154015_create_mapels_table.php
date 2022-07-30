@@ -14,8 +14,7 @@ class CreateMapelsTable extends Migration
     public function up()
     {
         Schema::create('mapels', function (Blueprint $table) {
-            $table->id();
-            $table->string('kode_mapel', 8)->unique();
+            $table->string('kode_mapel', 8)->primary();
             $table->string('nama_mapel');
             $table->text('keterangan')->nullable();
             $table->timestamps();

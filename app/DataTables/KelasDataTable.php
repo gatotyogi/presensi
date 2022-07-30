@@ -23,17 +23,17 @@ class KelasDataTable extends DataTable
             ->eloquent($query)
             ->addColumn('aksi', function ($item) {
                 return "<div class='d-flex'>
-                <a href=" . route('kelas.edit', $item->id) . " class='btn btn-success btn-sm'><i class='fas fa-pencil-alt'></i></a>
-                <form action=" . route('kelas.destroy', $item->id) . " class='ml-1 delete-form' data-target='" . $item->id . "' method='POST'>
+                <a href=" . route('kelas.edit', $item->kode_kelas) . " class='btn btn-success btn-sm'><i class='fas fa-pencil-alt'></i></a>
+                <form action=" . route('kelas.destroy', $item->kode_kelas) . " class='ml-1 delete-form' data-target='" . $item->kode_kelas . "' method='POST'>
                     " . csrf_field() . "
                     <input type='hidden' name='_method' value='delete'>
-                    <button class='btn btn-danger btn-sm' onclick='showModal(`Are you sure delete : $item->name ?`, `.delete-form`, `$item->id`);'>
+                    <button class='btn btn-danger btn-sm' onclick='showModal(`Are you sure delete : $item->name ?`, `.delete-form`, `$item->kode_kelas`);'>
                         <i class='fas fa-trash'></i>
                     </button>
                 </form>
             </div>";
             })->editColumn('name', function ($item) {
-                return "<a href=" . route('kelas.show', $item->id) . ">" . "<b>" . $item->name  . "</b>" . "</a>";
+                return "<a href=" . route('kelas.show', $item->kode_kelas) . ">" . "<b>" . $item->name  . "</b>" . "</a>";
             })->rawColumns(['name', 'aksi']);
     }
 
@@ -78,9 +78,9 @@ class KelasDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            Column::make('kode_kelas'),
             Column::make('nama_kelas'),
             Column::make('keterangan'),
-
             Column::computed('aksi')
                 ->exportable(false)
                 ->printable(false)
