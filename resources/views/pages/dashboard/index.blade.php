@@ -44,6 +44,62 @@
                 </div>
             </div>
         </div>
+        <div class="col-xl-3">
+            <div class="card">
+                <div class="card-body" title="Siswa Total = {{ $data['total_guru'] }}">
+                    <div class=" media">
+                        <div class="avatar-sm font-size-20 mr-3">
+                            <span class="avatar-title bg-soft-success text-success rounded">
+                                <i class="mdi mdi-account-key"></i>
+                            </span>
+                        </div>
+                        <div class="media-body">
+                            <div class="font-size-16">Siswa</div>
+                            <h6>{{ $data['total_guru'] }}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xl-3">
+            <div class="card">
+                <div class="card-body" title="Total Kelas = {{ $data['total_kelas'] }}">
+                    <div class=" media">
+                        <div class="avatar-sm font-size-20 mr-3">
+                            <span class="avatar-title bg-soft-primary text-primary rounded">
+                                <i class="mdi mdi-apps"></i>
+                            </span>
+                        </div>
+                        <div class="media-body">
+                            <div class="font-size-16">Kelas</div>
+                            <h6>{{ $data['total_kelas'] }}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3">
+            <div class="card">
+                <div class="card-body" title="Total Mata Pelajaran = {{ $data['total_mapel'] }}">
+                    <div class=" media">
+                        <div class="avatar-sm font-size-20 mr-3">
+                            <span class="avatar-title bg-soft-success text-success rounded">
+                                <i class="mdi mdi-more"></i>
+                            </span>
+                        </div>
+                        <div class="media-body">
+                            <div class="font-size-16">Mata Pelajaran</div>
+                            <h6>{{ $data['total_mapel'] }}</h6>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 @endsection

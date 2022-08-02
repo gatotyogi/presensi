@@ -2,7 +2,7 @@
 
 namespace App\DataTables;
 
-use App\Models\MapelDataTable;
+use App\Models\Mapel;
 use Yajra\DataTables\Html\Button;
 use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
@@ -21,7 +21,20 @@ class MapelDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', 'mapeldatatable.action');
+            ->addColumn('aksi', function ($item) {
+                return "<div class='d-flex'>
+            <a href=" . route('mapel.edit', $item->kode_mapel) . " class='btn btn-success btn-sm'><i class='fas fa-pencil-alt'></i></a>
+            <form action=" . route('mapel.destroy', $item->kode_mapel) . " class='ml-1 delete-form' data-target='" . $item->kode_mapel . "' method='POST'>
+                " . csrf_field() . "
+                <input type='hidden' name='_method' value='delete'>
+                <button class='btn btn-danger btn-sm' onclick='showModal(`Are you sure delete : $item->nama_mapel ?`, `.delete-form`, `$item->kode_mapel`);'>
+                    <i class='fas fa-trash'></i>
+                </button>
+            </form>
+        </div>";
+            })->editColumn('name', function ($item) {
+                return "<a href=" . route('mapel.show', $item->kode_mapel) . ">" . "<b>" . $item->name  . "</b>" . "</a>";
+            })->rawColumns(['name', 'aksi']);
     }
 
     /**
@@ -30,7 +43,7 @@ class MapelDataTable extends DataTable
      * @param \App\Models\MapelDataTable $model
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function query(MapelDataTable $model)
+    public function query(Mapel $model)
     {
         return $model->newQuery();
     }
@@ -43,18 +56,16 @@ class MapelDataTable extends DataTable
     public function html()
     {
         return $this->builder()
-                    ->setTableId('mapeldatatable-table')
-                    ->columns($this->getColumns())
-                    ->minifiedAjax()
-                    ->dom('Bfrtip')
-                    ->orderBy(1)
-                    ->buttons(
-                        Button::make('create'),
-                        Button::make('export'),
-                        Button::make('print'),
-                        Button::make('reset'),
-                        Button::make('reload')
-                    );
+            ->setTableId('mapeldatatable-table')
+            ->columns($this->getColumns())
+            ->minifiedAjax()
+            ->dom('Bfrtip')
+            ->orderBy(1)
+            ->buttons(
+                Button::make('create'),
+                Button::make('print'),
+                Button::make('reload')
+            );
     }
 
     /**
@@ -65,15 +76,14 @@ class MapelDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            Column::computed('action')
-                  ->exportable(false)
-                  ->printable(false)
-                  ->width(60)
-                  ->addClass('text-center'),
-            Column::make('id'),
-            Column::make('add your columns'),
-            Column::make('created_at'),
-            Column::make('updated_at'),
+            Column::make('kode_mapel'),
+            Column::make('nama_mapel'),
+            Column::make('keterangan'),
+            Column::computed('aksi')
+                ->exportable(false)
+                ->printable(false)
+                ->width(60)
+                ->addClass('text-center'),
         ];
     }
 

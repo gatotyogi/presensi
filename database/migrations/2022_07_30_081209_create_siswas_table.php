@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMapelsTable extends Migration
+class CreateSiswasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateMapelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mapels', function (Blueprint $table) {
-            $table->string('kode_mapel', 8)->primary();
-            $table->string('nip', 10)->nullable();
-            $table->string('nama_mapel');
-            $table->text('keterangan')->nullable();
+        Schema::create('siswas', function (Blueprint $table) {
+            $table->string('nis', 10)->primary();
+            $table->string('kode_kelas', 10);
+            $table->string('nama_siswa');
+            $table->string('kartu_rfid');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateMapelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mapels');
+        Schema::dropIfExists('siswas');
     }
 }

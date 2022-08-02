@@ -27,14 +27,14 @@ class KelasDataTable extends DataTable
                 <form action=" . route('kelas.destroy', $item->kode_kelas) . " class='ml-1 delete-form' data-target='" . $item->kode_kelas . "' method='POST'>
                     " . csrf_field() . "
                     <input type='hidden' name='_method' value='delete'>
-                    <button class='btn btn-danger btn-sm' onclick='showModal(`Are you sure delete : $item->name ?`, `.delete-form`, `$item->kode_kelas`);'>
+                    <button class='btn btn-danger btn-sm' onclick='showModal(`Are you sure delete : $item->nama_kelas ?`, `.delete-form`, `$item->kode_kelas`);'>
                         <i class='fas fa-trash'></i>
                     </button>
                 </form>
             </div>";
-            })->editColumn('name', function ($item) {
-                return "<a href=" . route('kelas.show', $item->kode_kelas) . ">" . "<b>" . $item->name  . "</b>" . "</a>";
-            })->rawColumns(['name', 'aksi']);
+            })->editColumn('kode_kelas', function ($item) {
+                return "<a href=" . route('kelas.show', $item->kode_kelas) . ">" . "<b>" . $item->kode_kelas  . "</b>" . "</a>";
+            })->rawColumns(['kode_kelas', 'aksi']);
     }
 
     /**
@@ -63,9 +63,7 @@ class KelasDataTable extends DataTable
             ->orderBy(1)
             ->buttons(
                 Button::make('create'),
-                Button::make('export'),
                 Button::make('print'),
-                Button::make('reset'),
                 Button::make('reload')
             );
     }
