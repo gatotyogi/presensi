@@ -15,69 +15,91 @@ class MapelSeeder extends Seeder
     public function run()
     {
         Mapel::create([
-            'kode_mapel' => 'MPL001',
-            'nama_mapel' => 'Ilmu Pengetahuan Alam',
-            'keterangan' => 'Mapel ini mengajar tentang ilmu pengetahuan Alam',
+            'kode_mapel' => 'MAPEL-1',
+            'nama_mapel' => 'Matematika',
+            'keterangan' => 'Matematika',
+        ]);
+        Mapel::create([
+            'kode_mapel' => 'MAPEL-2',
+            'nama_mapel' => 'Bahasa Indonesia',
+            'keterangan' => 'Bahasa Indonesia',
+        ]);
+        Mapel::create([
+            'kode_mapel' => 'MAPEL-3',
+            'nama_mapel' => 'Bahasa Inggris',
+            'keterangan' => 'Bahasa Inggris',
         ]);
 
         Mapel::create([
-            'kode_mapel' => 'MPL002',
-            'nama_mapel' => 'Ilmu Pengetahuan Sosial',
-            'keterangan' => 'Mapel ini mengajar tentang ilmu pengetahuan Sosial',
+            'kode_mapel' => 'MAPEL-4',
+            'nama_mapel' => 'Fisika',
+            'keterangan' => 'Fisika',
         ]);
 
         Mapel::create([
-            'kode_mapel' => 'MPL003',
-            'nama_mapel' => 'Ilmu Pengetahuan Teknologi',
-            'keterangan' => 'Mapel ini mengajar tentang ilmu pengetahuan Teknologi',
+            'kode_mapel' => 'MAPEL-5',
+            'nama_mapel' => 'Kimia',
+            'keterangan' => 'Kimia',
         ]);
 
         Mapel::create([
-            'kode_mapel' => 'MPL004',
-            'nama_mapel' => 'Ilmu Pengetahuan Budaya',
-            'keterangan' => 'Mapel ini mengajar tentang ilmu pengetahuan Budaya',
+            'kode_mapel' => 'MAPEL-6',
+            'nama_mapel' => 'Biologi',
+            'keterangan' => 'Biologi',
         ]);
 
         Mapel::create([
-            'kode_mapel' => 'MPL005',
-            'nama_mapel' => 'Ilmu Pengetahuan Geografi',
-            'keterangan' => 'Mapel ini mengajar tentang ilmu pengetahuan Geografi',
+            'kode_mapel' => 'MAPEL-7',
+            'nama_mapel' => 'Sejarah',
+            'keterangan' => 'Sejarah',
         ]);
 
         Mapel::create([
-            'kode_mapel' => 'MPL006',
-            'nama_mapel' => 'Ilmu Pengetahuan Ekonomi',
-            'keterangan' => 'Mapel ini mengajar tentang ilmu pengetahuan Ekonomi',
+            'kode_mapel' => 'MAPEL-8',
+            'nama_mapel' => 'Geografi',
+            'keterangan' => 'Geografi',
         ]);
 
         Mapel::create([
-            'kode_mapel' => 'MPL007',
-            'nama_mapel' => 'Ilmu Pengetahuan Sosiologi',
-            'keterangan' => 'Mapel ini mengajar tentang ilmu pengetahuan Sosiologi',
+            'kode_mapel' => 'MAPEL-9',
+            'nama_mapel' => 'Ekonomi',
+            'keterangan' => 'Ekonomi',
         ]);
 
         Mapel::create([
-            'kode_mapel' => 'MPL008',
-            'nama_mapel' => 'Ilmu Pengetahuan Politik',
-            'keterangan' => 'Mapel ini mengajar tentang ilmu pengetahuan Politik',
+            'kode_mapel' => 'MAPEL-10',
+            'nama_mapel' => 'Sosiologi',
+            'keterangan' => 'Sosiologi',
         ]);
 
         Mapel::create([
-            'kode_mapel' => 'MPL009',
-            'nama_mapel' => 'Ilmu Pengetahuan Hukum',
-            'keterangan' => 'Mapel ini mengajar tentang ilmu pengetahuan Hukum',
+            'kode_mapel' => 'MAPEL-11',
+            'nama_mapel' => 'Sejarah',
+            'keterangan' => 'Sejarah',
         ]);
 
         Mapel::create([
-            'kode_mapel' => 'MPL010',
-            'nama_mapel' => 'Ilmu Pengetahuan Kesehatan',
-            'keterangan' => 'Mapel ini mengajar tentang ilmu pengetahuan Kesehatan',
+            'kode_mapel' => 'MAPEL-12',
+            'nama_mapel' => 'Geografi',
+            'keterangan' => 'Geografi',
         ]);
 
         Mapel::create([
-            'kode_mapel' => 'MPL011',
-            'nama_mapel' => 'Ilmu Pengetahuan Kebudayaan',
-            'keterangan' => 'Mapel ini mengajar tentang ilmu pengetahuan Kebudayaan',
+            'kode_mapel' => 'MAPEL-13',
+            'nama_mapel' => 'Ekonomi',
+            'keterangan' => 'Ekonomi',
+        ]);
+
+        Mapel::create([
+            'kode_mapel' => 'MAPEL-14',
+            'nama_mapel' => 'Sosiologi',
+            'keterangan' => 'Sosiologi',
+        ]);
+
+        Mapel::create([
+            'kode_mapel' => 'MAPEL-15',
+            'nama_mapel' => 'Sejarah',
+            'keterangan' => 'Sejarah',
         ]);
     }
 }

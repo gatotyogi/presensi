@@ -15,9 +15,8 @@
             <!-- Left Menu Start -->
             <ul class="metismenu list-unstyled" id="side-menu">
                 <li class="menu-title">Menu</li>
-
                 <li>
-                    <a href="{{ route('home') }}" class="waves-effect" title="Dashboard">
+                    <a href="{{ route('admin.dashboard') }}" class="waves-effect" title="Dashboard">
                         <i class="mdi mdi-airplay"></i>
                         <span>Dashboard</span>
                     </a>
@@ -30,21 +29,15 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="{{ route('kelas.index') }}" class="waves-effect" title="Kelas">
-                                <i class="mdi mdi-apps"></i>
+                            <a href="{{ route('kelas.index') }}" class="waves-effect" title="kelas">
+                                <i class="mdi mdi-format-align-justify"></i>
                                 <span>Kelas</span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ route('mapel.index') }}" class="waves-effect" title="Mapel">
-                                <i class="mdi mdi-more"></i>
+                            <a href="{{ route('mapel.index') }}" class="waves-effect" title="mapel">
+                                <i class="mdi mdi-monitor-multiple"></i>
                                 <span>Mata Pelajaran</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{ route('guru.index') }}" class="waves-effect" title="Guru">
-                                <i class="mdi mdi-account-box-outline"></i>
-                                <span>Guru</span>
                             </a>
                         </li>
 
@@ -58,32 +51,12 @@
                 </li>
                 <li class="menu-title">Aplikasi</li>
                 <li>
-                    <a href="{{ route('jadwal.index') }}" class="waves-effect" title="Jadwal">
-                        <i class="mdi mdi-calendar"></i>
-                        <span>Jadwal</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ route('jadwal.index') }}" class="waves-effect" title="Absensi">
-                        <i class="mdi mdi-clipboard-outline"></i>
-                        <span>Absensi</span>
-                    </a>
-                </li>
-                <li class="menu-title">Report</li>
-                <li>
-                    <a href="{{ route('report.index') }}" class="waves-effect" title="Laporan">
-                        <i class="mdi mdi-printer"></i>
-                        <span>Laporan</span>
+                    <a href="{{ route('user.index') }}" class="waves-effect" title="Laporan">
+                        <i class="mdi mdi-account-key"></i>
+                        <span>Data User</span>
                     </a>
                 </li>
 
-                <li class="menu-title">Sistem</li>
-                <li>
-                    <a href="{{ route('report.index') }}" class="waves-effect" title="User Managemen">
-                        <i class="mdi mdi-account-key"></i>
-                        <span>User Managemen</span>
-                    </a>
-                </li>
                 <li>
                     <a href="{{ route('setting.index') }}" class="waves-effect" title="Laporan">
                         <i class="mdi mdi-wrench"></i>

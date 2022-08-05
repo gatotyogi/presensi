@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRfidModesTable extends Migration
+class CreateTmprfidsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateRfidModesTable extends Migration
      */
     public function up()
     {
-        Schema::create('rfid_modes', function (Blueprint $table) {
+        Schema::create('tmprfids', function (Blueprint $table) {
             $table->id();
-            $table->integer('status')->default(1);
+            $table->integer('id_device');
+            $table->string('rfid');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ class CreateRfidModesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('rfid_modes');
+        Schema::dropIfExists('tmprfids');
     }
 }

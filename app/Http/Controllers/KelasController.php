@@ -2,37 +2,46 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\KelasDataTable;
 use App\Models\Kelas;
 use Illuminate\Http\Request;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class KelasController extends Controller
 {
-    public function __construct()
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
+        $kelas = Kelas::all();
+        return view('pages.kelas.index', compact('kelas'));
     }
 
-
-    public function index(KelasDataTable $dataTable)
-    {
-        return $dataTable->render('pages.kelas.index');
-    }
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return view('pages.kelas.create');
     }
 
-
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $this->validate($request, [
-            'kode_kelas' => 'required', 'string', 'unique:kelas', 'max:8',
-            'nama_kelas' => 'required', 'string', 'email', 'max:30',
-            'keterangan' => 'required'
-        ]);
+            'nama_kelas' => 'required', 'string', 'max:40',
+            'kode_kelas' => 'required', 'string', 'unique:kelas',
 
+        ]);
         $kelas = Kelas::create([
             'kode_kelas' => $request->kode_kelas,
             'nama_kelas' => $request->nama_kelas,
@@ -40,66 +49,91 @@ class KelasController extends Controller
 
         ]);
         if ($kelas) {
-            Alert::success('Berhasil', 'Data Kelas Berhasil Ditambahkan');
+            Alert::success('Success', 'kelas Berhasil Ditambahkan');
             return redirect()
                 ->route('kelas.index');
         } else {
-            Alert::error('Gagal', 'Data Kelas Gagal Ditambahkan');
             return redirect()
-                ->back();
+                ->back()
+                ->withInput()
+                ->with('error', 'Data Gagal Ditambahkan');
         }
     }
 
-
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function show(Kelas $kelas)
     {
-        return view('pages.kelas.detail', compact('kelas'));
+        return view('pages.kelas.show', compact('kelas'));
     }
 
 
-    public function edit(Kelas $kelas)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
+        $kelas = Kelas::find($id);
         return view('pages.kelas.edit', compact('kelas'));
     }
 
-
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
     public function update(Request $request, $id)
     {
         $this->validate($request, [
-            'nama_kelas' => 'required', 'string',
-            'keterangan' => 'required'
+            'nama_kelas' => 'required', 'string', 'max:40',
+
         ]);
 
         $kelas = Kelas::findOrFail($id);
 
         $kelas->update([
+            'kode_kelas' => $request->kode_kelas,
             'nama_kelas' => $request->nama_kelas,
-            'ketrangan' => $request->ketrangan,
+            'keterangan' => $request->keterangan,
 
         ]);
 
         if ($kelas) {
-            Alert::success('Berhasil', 'Data Kelas Berhasil Diubah');
             return redirect()
-                ->route('kelas.index');
+                ->route('kelas.index')
+                ->with([
+                    'success' => 'Data Kelas Berhasil Di update'
+                ]);
         } else {
-            Alert::error('Gagal', 'Data Kelas Gagal Diubah');
             return redirect()
-                ->back();
+                ->back()
+                ->withInput()
+                ->with([
+                    'error' => 'Some problem has occured, please try again'
+                ]);
         }
     }
 
-    public function destroy(Kelas $kelas)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
-
+        $kelas = Kelas::find($id);
         $kelas->delete();
-        if ($kelas) {
-            Alert::success('Berhasil', 'Data Kelas Berhasil Dihapus');
-            return redirect()
-                ->route('kelas.index');
-        }
-        return
-            Alert::error('Gagal', 'Data Kelas Gagal Dihapus');
-        redirect()->route('kelas.index');
+        Alert::success('Berhasil', 'Data Kelas Berhasil Dihapus');
+        return redirect()->route('kelas.index');
     }
 }

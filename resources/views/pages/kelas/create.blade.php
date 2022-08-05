@@ -1,4 +1,5 @@
 @extends('layouts.main')
+
 @section('title', 'Tambah Kelas')
 @section('content')
     <x-page-title>
@@ -13,7 +14,7 @@
             @include('messages.alert')
             <div class="card">
                 <div class="card-body">
-                    <h3 class="card-title">Tambah Kelas</h3>
+                    <h3 class="card-title">Form Input</h3>
                     <form method="POST" action="{{ route('kelas.store') }}">
                         @csrf
 
@@ -32,9 +33,11 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="title">Keterangan Kelas <span class="text-danger">*</span></label>
-                            <textarea name="keterangan" id="keterangan" class="form-control" cols="30" rows="3" required></textarea>
+                            <label for="title">Keterangan</label>
+                            <textarea name="keterangan" cols="30" rows="3" class="form-control"></textarea>
                         </div>
+
+
 
                         <div class="text-center">
                             <a href="{{ route('kelas.index') }}" class="btn btn-secondary" title="Kembali"><i
